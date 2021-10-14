@@ -8,12 +8,16 @@ function YoutubForm() {
             name:'',
             email:'',
             channel:'',
+        },
+        onSubmit: values =>{
+             console.log('Form Data', values)
         }
     })
 
-    console.log('Formik Values', formik.values)
+    // console.log('Formik Values', formik.values)
     return (
         <div>
+        <form onSubmit={formik.handleSubmit}>
         <label htmlFor="name">Name</label>
         <input 
             type="text" 
@@ -41,7 +45,8 @@ function YoutubForm() {
             value={formik.values.channel}
         />
         <br/>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
+        </form> 
         </div>
     )
 }
