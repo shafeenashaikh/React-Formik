@@ -36,7 +36,7 @@ function YoutubForm() {
         validate,
     })
 
-    console.log('Formik errors', formik.errors)
+    console.log('visited fields', formik.touched)
     return (
         <div >
         <form onSubmit={formik.handleSubmit}>
@@ -47,6 +47,7 @@ function YoutubForm() {
                 id="name"
                 name="name" 
                 onChange={formik.handleChange} 
+                onBlur={formik.handleBlur}
                 value={formik.values.name}
             />
             {formik.errors.name ? <div className="error"> {formik.errors.name} </div>: null}
@@ -59,6 +60,7 @@ function YoutubForm() {
                 id="email"
                 name="email" 
                 onChange={formik.handleChange} 
+                onBlur={formik.handleBlur}
                 value={formik.values.email}
             />
             {formik.errors.email ? <div className="error"> {formik.errors.email} </div>: null}
@@ -71,6 +73,7 @@ function YoutubForm() {
                 id="channel" 
                 name="channel" 
                 onChange={formik.handleChange} 
+                onBlur={formik.handleBlur}
                 value={formik.values.channel}
             />
             {formik.errors.channel ? <div className="error"> {formik.errors.channel} </div>: null}
