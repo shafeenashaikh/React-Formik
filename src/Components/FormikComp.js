@@ -9,9 +9,10 @@ import * as Yup from 'yup'
 
 
 const initialValues = {
-    name:'',
+    name:'Diana',
     email:'',
     channel:'',
+    comments:''
 }
 
 const onSubmit = values =>{
@@ -55,8 +56,19 @@ function FormikComp() {
                 type='text'
                 id='channel'
                 name='channel'
+                placeholder='Youtube channel name'
               />
               <ErrorMessage name='channel' />
+            </div>
+
+            <div className='form-control'>
+              <label htmlFor='comments'>Comments</label>
+              <Field
+                as ='textarea'
+                id='comments'
+                name='comments'
+              />
+              
             </div>
             <button type='submit'>Submit</button>
         </Form>
