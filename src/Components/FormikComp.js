@@ -14,7 +14,11 @@ const initialValues = {
     email:'',
     channel:'',
     comments:'',
-    address:''
+    address:'',
+    social: {
+        facebook:'',
+        twitter:''
+    }
 }
 
 const onSubmit = values =>{
@@ -94,6 +98,16 @@ function FormikComp() {
                   }
               </Field>
              
+            </div>
+
+            <div className='form-control'>
+              <label htmlFor='facebook'>Facebook Profile</label>
+              <Field type="text" id='facebook' name='social.facebook'/>
+            </div>
+
+            <div className='form-control'>
+              <label htmlFor='twitter'>Twitter Profile</label>
+              <Field type="text" id='twitter' name='social.twitter'/>
             </div>
             <button type='submit'>Submit</button>
         </Form>
