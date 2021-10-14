@@ -12,7 +12,8 @@ const initialValues = {
     name:'Diana',
     email:'',
     channel:'',
-    comments:''
+    comments:'',
+    address:''
 }
 
 const onSubmit = values =>{
@@ -68,7 +69,24 @@ function FormikComp() {
                 id='comments'
                 name='comments'
               />
-              
+            </div>
+
+            <div className='form-control'>
+              <label htmlFor='address'>Address</label>
+              <Field name='address'>
+                  {
+                      (props)=>{
+                          const {field, form, meta} = props
+                          console.log('Render props',props)
+                          return (
+                        <div>
+                            <input type="text" id="address" {...field}/>
+                            {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+                        </div>
+                          )}
+                  }
+              </Field>
+             
             </div>
             <button type='submit'>Submit</button>
         </Form>
