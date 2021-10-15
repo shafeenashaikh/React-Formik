@@ -12,11 +12,11 @@ import TextError from './TextError'
 
 
 const initialValues = {
-    name:'Diana',
-    email:'',
-    channel:'',
-    comments:'',
-    address:'',
+    // name:'Diana',
+    // email:'',
+    // channel:'',
+    // comments:'',
+    // address:'',
     social: {
         facebook:'',
         twitter:''
@@ -25,8 +25,10 @@ const initialValues = {
     phNumbers: ['']
 }
 
-const onSubmit = values =>{
+const onSubmit = (values, onSubmitProps) =>{
     console.log('Form Data', values)
+    console.log('submiting props', onSubmitProps)
+    onSubmitProps.setSubmitting(false)
 }
 
 
@@ -52,7 +54,7 @@ function DisableSubmitbtn() {
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
-        validateOnMount
+        // validateOnMount
       >
 
         {
@@ -197,7 +199,8 @@ function DisableSubmitbtn() {
                 Visit fields
               </button>
 
-              <button type='submit' disabled={!formik.isValid}>Submit</button>
+              {/* <button type='submit' disabled={!formik.isValid}>Submit</button> */}
+              <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
           </Form> 
             )}}
     </Formik>
