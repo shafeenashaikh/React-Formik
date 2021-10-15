@@ -3,7 +3,8 @@ import {
   Formik,
   Form,
   Field,
-  ErrorMessage
+  ErrorMessage,
+  FieldArray
 } from 'formik'
 import * as Yup from 'yup'
 import TextError from './TextError'
@@ -19,7 +20,8 @@ const initialValues = {
         facebook:'',
         twitter:''
     },
-    phoneNumber: [' ', ' ']
+    phoneNumbers: [' ', ' '],
+    phNumbers: ['']
 }
 
 const onSubmit = values =>{
@@ -54,13 +56,11 @@ function FormikComp() {
               <label htmlFor='email'>Email</label>
               <Field type='email' id='email' name='email' />
               <ErrorMessage name='email'>
-                {
-                    (errorMsg)=> {
+               
+                  {(errorMsg)=> {
                         return <div className="error">{errorMsg}</div>
-                    }
-                }
+                    }}
               </ErrorMessage>
-
             </div>
 
             <div className='form-control'>
@@ -89,16 +89,13 @@ function FormikComp() {
                   {
                       (props)=>{
                           const {field, form, meta} = props
-                          console.log('Render props',props)
                           return (
                         <div>
                             <input type="text" id="address" {...field}/>
                             {meta.touched && meta.error ? <div>{meta.error}</div> : null}
                         </div>
-                          )}
-                  }
-              </Field>
-             
+                      )}}
+                </Field>
             </div>
 
             <div className='form-control'>
@@ -120,10 +117,41 @@ function FormikComp() {
               <label htmlFor='secondaryPh'>Secondary Phone Number</label>
               <Field type="text" id='secondaryPh' name='phoneNumbers[0]'/>
             </div>
+
+            <div className='form-control' >
+              <label>List of Phone Numbers</label>
+              <FieldArray name="phNumbers">
+                {
+                  fieldArrayProps => {
+                      console.log('fieldArrayProps', fieldArrayProps)
+                      const {push, remove, form} = fieldArrayProps
+                      const {values} = form
+                      const {phNumbers} = values
+                      return (
+                          <div>
+                            { phNumbers.map((phNumbers, index) => (
+                              <div key={index} >
+                                <Field  name={`phNumbers[${index}]`}/>
+                                {
+                                  index > 0 && (
+                                    <button type="button" onClick={() => remove(index)}>
+                                      {' '}
+                                       - {' '}
+                                       </button>
+                                  )}
+                                
+                                <button type="button" onClick={() => push('')}>
+                                  {' '}
+                                   + {' '}
+                                   </button>
+                              </div>
+                            ))}
+                          </div>     
+                      )}}
+              </FieldArray>
+            </div>
             <button type='submit'>Submit</button>
-        </Form>
-        
-      
+        </Form> 
     </Formik>
   )
 }
