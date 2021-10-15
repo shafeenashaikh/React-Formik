@@ -34,8 +34,9 @@ const validationSchema = Yup.object({
     name: Yup.string().required('Required!'),
     email: Yup.string().email('Invalid email formate')
     .required('Required!'),
-    channel: Yup.string().required('Required!')
+    channel: Yup.string().required('Required!'),
 })
+
 
 
 function FormikComp() {
@@ -82,6 +83,7 @@ function FormikComp() {
                 id='comments'
                 name='comments'
               />
+            
             </div>
 
             <div className='form-control'>
