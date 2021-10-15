@@ -4,7 +4,8 @@ import {
   Form,
   Field,
   ErrorMessage,
-  FieldArray
+  FieldArray,
+  FastField
 } from 'formik'
 import * as Yup from 'yup'
 import TextError from './TextError'
@@ -38,7 +39,7 @@ const validationSchema = Yup.object({
 
 
 function FormikComp() {
-  
+
   return (
     <Formik
       initialValues={initialValues}
@@ -85,9 +86,10 @@ function FormikComp() {
 
             <div className='form-control'>
               <label htmlFor='address'>Address</label>
-              <Field name='address'>
+              <FastField name='address'>
                   {
                       (props)=>{
+                          console.log('Field Render')
                           const {field, form, meta} = props
                           return (
                         <div>
@@ -95,7 +97,7 @@ function FormikComp() {
                             {meta.touched && meta.error ? <div>{meta.error}</div> : null}
                         </div>
                       )}}
-                </Field>
+                </FastField>
             </div>
 
             <div className='form-control'>
@@ -123,7 +125,6 @@ function FormikComp() {
               <FieldArray name="phNumbers">
                 {
                   fieldArrayProps => {
-                      console.log('fieldArrayProps', fieldArrayProps)
                       const {push, remove, form} = fieldArrayProps
                       const {values} = form
                       const {phNumbers} = values
