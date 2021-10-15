@@ -45,13 +45,14 @@ const validateComments = value => {
   return error
 }
 
-function Validation() {
+function DisableSubmitbtn() {
 
   return (
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={onSubmit}
+        validateOnMount
       >
 
         {
@@ -196,11 +197,11 @@ function Validation() {
                 Visit fields
               </button>
 
-              <button type='submit'>Submit</button>
+              <button type='submit' disabled={!formik.isValid}>Submit</button>
           </Form> 
             )}}
     </Formik>
   )
 }
 
-export default Validation
+export default DisableSubmitbtn
