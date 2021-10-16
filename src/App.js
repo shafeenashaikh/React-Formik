@@ -6,11 +6,14 @@ import LoadData from './Components/LoadData';
 import OldYoutubeForm from './Components/OldYouTubeForm';
 import Validation from './Components/Validation';
 import YoutubForm from './Components/YoutubForm';
+import App1 from './Components1/App1';
+
 
 function App() {
   return (
     <div className="App">
-      <LoadData/>
+      <App1/>
+      {/* <LoadData/> */}
       {/* <DisableSubmitbtn/> */}
       {/* <Validation/> */}
       {/* <FormikComp/> */}
