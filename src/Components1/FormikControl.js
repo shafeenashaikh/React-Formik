@@ -1,5 +1,6 @@
 import React from 'react'
 import CheckboxGroup from './checkboxGroup'
+import DataPicker from './DataPicker'
 import Input from './Input'
 import RadioButtons from './RadioButtons'
 import Select from './Select'
@@ -19,6 +20,7 @@ import TextArea from './TextArea'
         case 'checkbox':
             return <CheckboxGroup {...rest}/>
         case 'date':
+            return <DataPicker {...rest}/>
         default: return null
      }
 }
