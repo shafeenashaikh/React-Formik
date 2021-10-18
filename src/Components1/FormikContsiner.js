@@ -20,10 +20,10 @@ function FormikContainer() {
     ]
 
     const checkboxOptions = [
-        {key: 'Option 1', value: 'cOption1'},
-        {key: 'Option 2', value: 'cOption2'},
-        {key: 'Option 3', value: 'cOption3'},
-    ]
+        { key: 'Option 1', value: 'cOption1' },
+        { key: 'Option 2', value: 'cOption2' },
+        { key: 'Option 3', value: 'cOption3' }
+      ]
 
     const initialValues = {
         email:'',
@@ -77,12 +77,12 @@ function FormikContainer() {
                         name= 'radioOption'
                         options= {radioOptions}
                        />
-                       <FormikControl
-                        control='checkbox'
-                        label= 'Checkbox Topic'
-                        name= 'checkboxOption'
-                        options= {checkboxOptions}
-                       />
+                        <FormikControl
+                            control='checkbox'
+                            label='Checkbox topics'
+                            name='checkboxOption'
+                            options={checkboxOptions}
+                        />
                          <FormikControl
                         control='date'
                         label= 'Pick a date'
